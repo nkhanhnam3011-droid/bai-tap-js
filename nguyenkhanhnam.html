@@ -34,42 +34,34 @@
             let password = document.getElementById('password').value;
             let messageDiv = document.getElementById('message');
             
-            // Kiểm tra username
             if (username.trim() === '') {
                 messageDiv.innerHTML = '<div class="error">Vui lòng nhập tên đăng nhập!</div>';
                 return;
             }
             
-            // Kiểm tra mật khẩu
             let errors = [];
             
-            // 1. Kiểm tra độ dài
             if (password.length < 8) {
                 errors.push("Mật khẩu phải có ít nhất 8 ký tự");
             }
             
-            // 2. Kiểm tra chữ hoa
             if (!/[A-Z]/.test(password)) {
                 errors.push("Mật khẩu phải chứa ít nhất 1 chữ hoa (A-Z)");
             }
             
-            // 3. Kiểm tra chữ thường
             if (!/[a-z]/.test(password)) {
                 errors.push("Mật khẩu phải chứa ít nhất 1 chữ thường (a-z)");
             }
             
-            // 4. Kiểm tra chữ số
             if (!/[0-9]/.test(password)) {
                 errors.push("Mật khẩu phải chứa ít nhất 1 chữ số (0-9)");
             }
             
-            // 5. Kiểm tra ký tự đặc biệt
             let specialChars = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~`]/;
             if (!specialChars.test(password)) {
                 errors.push("Mật khẩu phải chứa ít nhất 1 ký tự đặc biệt (@, #, $, %, ...)");
             }
             
-            // Nếu có lỗi
             if (errors.length > 0) {
                 let errorHtml = '<div class="error">Mật khẩu không hợp lệ:<br>';
                 for (let i = 0; i < errors.length; i++) {
@@ -80,7 +72,6 @@
                 return;
             }
             
-            // Nếu mật khẩu hợp lệ, xác định độ mạnh
             let strength = "";
             let strengthClass = "";
             
